@@ -1,0 +1,101 @@
+# ==========================================
+#        TaxPro - Main Config
+# ==========================================
+
+General:
+  Prefix: "&b&lTaxPro &7» &f"
+  Debug-Mode: false
+  # Enable logging tax deductions and payments to taxes.log
+  Log-Transactions: true
+
+Integrations:
+  # Requires Vault and a valid Economy provider (e.g., EssentialsX, CMI)
+  Vault-Enabled: true
+  # Requires GriefPrevention
+  GriefPrevention-Enabled: true
+
+Wealth-Tax:
+  Enabled: true
+  # Should the tax run automatically based on its frequency? Set to false to only allow manual /tax forcewealth
+  Auto-Run: true
+  # Frequency in hours (168 = 1 week)
+  Frequency-Hours: 168
+  Brackets:
+    # Marginal tax system: Only taxes the amount within the bracket
+    Tier1:
+      Min: 0
+      Max: 25000
+      Rate: 0.0
+      Base-Fee: 0.0
+    Tier2:
+      Min: 25001
+      Max: 100000
+      Rate: 0.02
+      Base-Fee: 500.0
+    Tier3:
+      Min: 100001
+      Max: 500000
+      Rate: 0.05
+      Base-Fee: 5000.0
+    Tier4:
+      Min: 500001
+      Max: 2000000
+      Rate: 0.08
+      Base-Fee: 40000.0
+    Tier5:
+      Min: 2000001
+      Max: -1 # -1 represents infinity
+      Rate: 0.10
+      Base-Fee: 200000.0
+
+Land-Tax:
+  Enabled: true
+  # Should the tax run automatically based on its frequency? Set to false to only allow manual /tax forceland
+  Auto-Run: true
+  # Frequency in hours (24 = 1 day)
+  Frequency-Hours: 24
+  cost-Per-Claim-Block: 0.01
+  # Tax-Method can be:
+  # 'USED' (only blocks currently physically placed/claimed)
+  # 'REMAINING' (blocks sitting in their pool that are NOT physically claimed yet)
+  # 'TOTAL' (their entire block pool unconditionally: Used + Remaining combined)
+  Tax-Method: "USED"
+  Penalty-System:
+    # Max strikes before action is taken
+    Max-Strikes: 2
+    # Action on max strikes: 'UNCLAIM_OLDEST', 'UNCLAIM_ALL', or 'CUSTOM_COMMAND'
+    Punishment: "CUSTOM_COMMAND"
+    # The command to dispatch from console if Punishment is set to CUSTOM_COMMAND
+    Custom-Command: "cmi jail %player% 1h not paying taxes"
+
+Death-Penalty:
+  Enabled: true
+  # Percentage of current wallet balance lost on death
+  Wallet-Percentage: 0.01
+  # Minimum balance required for the penalty to apply (protects new players)
+  Exempt-Below: 1000.0
+  # Maximum amount that can be lost in a single death (set to -1 for no cap)
+  Max-Penalty: -1
+  # List of worlds where the death penalty does NOT apply
+  Exempt-Worlds:
+    - "spawn"
+
+Command-Fees:
+  Enabled: true
+  # Players only receive a message if they have insufficient funds.
+  Exempt-Below: 500.0
+  
+  # Grouped prices: Apply the same fee to a list of commands
+  Groups:
+    Teleportation:
+      Price: 25.0
+      Commands:
+        - "tpa %" # % represents wildcard
+        - "tpaccept"
+        - "home"
+        
+  # Individual prices: Overrides group prices if a command appears in both
+  Individual:
+    "ec": 50.0
+    "feed": 15.0
+    "repair": 500.0
