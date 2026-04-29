@@ -1,0 +1,30 @@
+name: TaxPro
+version: '1.0.0'
+main: com.megalithx.taxpro.TaxPro
+author: MegaLithX
+api-version: '1.13'
+depend: [Vault]
+softdepend: [GriefPrevention, PlaceholderAPI]
+commands:
+  tax:
+    description: "Main command for TaxPro"
+    usage: "/tax <help|forcewealth|forceland|stats>"
+permissions:
+  tax.exempt.wealth:
+    description: "Bypasses the weekly progressive wealth tax completely."
+    default: false
+  tax.exempt.land:
+    description: "Immune to land tax and strikes."
+    default: false
+  tax.exempt.deathpenalty:
+    description: "Retains full wallet balance upon dying."
+    default: false
+  tax.exempt.commandfees:
+    description: "Use any configured paid command for free."
+    default: false
+  tax.admin:
+    description: "Grants access to use the /tax commands."
+    default: op
+  tax.command.stats:
+    description: "Grants access to see personal tax stats."
+    default: true

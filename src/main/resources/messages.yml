@@ -1,0 +1,32 @@
+Wealth-Tax:
+  Broadcast-Start: "%prefix%&eThe weekly Wealth Tax is now being processed..."
+  Broadcast-End: "%prefix%&aWealth Tax collection complete. Thank you for supporting the economy!"
+  Player-Receipt: "%prefix%&7The Taxman has collected &c$%amount% &7based on your wealth bracket. New Balance: &a$%balance%. &7Run [/tax stats] for more information."
+  Exempt: "%prefix%&a[Tax] &7Your wealth falls under the taxation threshold. You are exempt from the Wealth Tax this week."
+
+Land-Tax:
+  Broadcast-Start: "%prefix%&bThe daily Land Tax is now being processed..."
+  Broadcast-End: "%prefix%&aLand Tax collection complete. All properties evaluated! test"
+  Player-Receipt: "%prefix%&7Paid &c$%amount% &7upkeep to taxman for &b%blocks% &7claim blocks. New Balance: &a$%balance%. &7Run [/tax stats] for more information."
+  Strike-Warning: "%prefix%&e[Warning] &cYou had insufficient funds to pay your Land Tax! &7Strike: &c%strikes%/2&7. Fund your account to avoid claim deletion!"
+  Strike-Action: "%prefix%&4[ALERT] &cYou failed to pay your Land Tax for multiple days."
+
+Death-Penalty:
+  Death-Message: "%prefix%&8[&4Death&8] &7The Styx toll has been collected. You lost &c$%amount% &7from your wallet."
+
+Command-Fees:
+  Insufficient-Funds: "&cYou need $%amount% to use this command. Your balance: $%balance%"
+
+Errors:
+  No-Permission: "&cYou do not have permission to do this."
+  Vault-Error: "&4Critical Error: Vault integration failed. Please contact an administrator."
+
+Stats:
+  Player-Stats:
+    - "&8&m--------&r &eYour Tax Stats &8&m--------"
+    - "&eProjected Wealth Tax: &c-$%wealth_tax_amount% &7(Due in: %wealth_time_remaining%)"
+    - "&eProjected Land Tax: &c-$%land_tax_amount% &7(Due in: %land_time_remaining%)"
+    - "&cActive Penalties: %strikes% Strike(s)"
+    - "&8&m-----------------------------"
+
+  Tax-Exempt-Format: "&aExempt ($0.00)"
